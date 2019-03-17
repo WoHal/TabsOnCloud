@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import URLList from './components/List';
+import Config from './components/Config';
+import URLList from './components/URLList';
+
+import './entry.scss';
 
 class App extends React.Component {
     render() {
         return (
-            <URLList />
+            <div className="entry">
+                <Config />
+                <URLList />
+            </div>
         );
     }
 }

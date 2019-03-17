@@ -1,2 +1,3 @@
 # TabsOnCloud
-同步浏览器tab页面链接
+
+Sync opened urls between multiple chrome-browsers
