@@ -1,1 +1,4 @@
+.vscode
+extension_source/node_modules/
+extension/
 server/node_modules/

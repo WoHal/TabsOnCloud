@@ -5,7 +5,7 @@
     "manifest_version": 2,
     "author": "WoHal",
     "background": {
-        "scripts": ["popup.js"],
+        "scripts": ["background.js"],
         "persistent": false
     },
     "page_action": {
@@ -22,5 +22,9 @@
         "128": "images/icon128.png",
         "256": "images/icon256.png"
     },
-    "permissions": ["declarativeContent", "tabs"]
+    "permissions": [
+        "declarativeContent",
+        "tabs",
+        "storage"
+    ]
 }
