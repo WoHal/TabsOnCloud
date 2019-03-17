@@ -1,10 +1,10 @@
-const WebSocket = require('ws');
-const program = require('commander');
+const WebSocket = require("ws");
+const program = require("commander");
 
 program
-    .version('0.0.1')
-    .option('-p, --port', 'server port')
-    .parse(process.argv);
+  .version("0.0.1")
+  .option("-p, --port", "server port")
+  .parse(process.argv);
 
 const PORT = program.port || 8033;
 
@@ -31,28 +31,35 @@ const wss = new WebSocket.Server({
   }
 });
 
-const existTabSet = new Set();
+const tabTitleArr = [];
+const tabURLArr = [];
 
-wss.on('connection', ws => {
-    ws.on('message', data => {
-        console.log('received: ', data);
-        try {
-            let urls = JSON.parse(data);
-            urls.forEach(url => {
-                existTabSet.add(url);
-            });
-
-            let res = [];
-            for (let url of existTabSet.values()) {
-                res.push(url);
-            }
-
-            ws.send(JSON.stringify(res));
-
-            urls = null;
-            res = null;
-        } catch(e) {
-            console.log(e);
+wss.on("connection", ws => {
+  ws.on("message", data => {
+    console.log("received: ", data);
+    try {
+      let tabs = JSON.parse(data);
+      tabs.forEach(({url, title}) => {
+        if (!tabURLArr.includes(url)) {
+          tabURLArr.push(url);
+          tabTitleArr.push(title);
         }
-    });
+      });
+
+      let res = [];
+      tabURLArr.forEach((url, index) => {
+        res.push({
+          url,
+          title: tabTitleArr[index]
+        });
+      });
+
+      ws.send(JSON.stringify(res));
+
+      tabs = null;
+      res = null;
+    } catch (e) {
+      console.log(e);
+    }
+  });
 });
