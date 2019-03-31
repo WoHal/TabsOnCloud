@@ -1,37 +1,32 @@
 import React from 'react';
 import {List, Button} from 'antd';
+
+import {observer, inject} from 'mobx-react';
+
 import './index.scss';
 
-export default class URLList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: []
-        };
-    }
-    componentDidMount() {
-        chrome.storage.sync.get(['data'], ({data}) => {
-            this.setState({
-                data
-            });
-        });
-    }
-    openPage(url) {
-        chrome.tabs.create({url});
-    }
+@inject(({store}) => {
+    alert(JSON.stringify(store.list))
+    return ({
+        list: store.list,
+        openPage: store.openPage
+    });
+})
+@observer
+export default class Boards extends React.Component {
     render() {
-        const {data} = this.state;
+        const {list, openPage} = this.props;
         return (
             <List
                 className="m-list"
                 bordered
-                dataSource={data}
+                dataSource={list}
                 renderItem={item => {
                     return (
                         <List.Item>
                             <Button
                                 className="link"
-                                onClick={this.openPage.bind(this, item.url)}
+                                onClick={openPage.bind(this, item.url)}
                             >{item.title}</Button>
                         </List.Item>
                     );

@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'mobx-react';
 
-import Config from './components/Config';
-import URLList from './components/URLList';
+import store from './store';
+
+import Config from './container/Config';
+import URLList from './container/URLList';
 
 import './entry.scss';
 
 class App extends React.Component {
     render() {
         return (
-            <div className="entry">
-                <Config />
-                <URLList />
-            </div>
+            <Provider store={store}>
+                <div className="entry">
+                    <Config />
+                    <URLList />
+                </div>
+            </Provider>
         );
     }
 }

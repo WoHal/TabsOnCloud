@@ -12,7 +12,14 @@
   "author": "WoHal",
   "license": "MIT",
   "dependencies": {
+    "babel-register": "^6.26.0",
     "commander": "^2.19.0",
-    "ws": "^6.2.0"
+    "ioredis": "^4.9.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.4.0"
   }
 }
