@@ -3,7 +3,7 @@ const ExtractCssPlugin = require('extract-css-chunks-webpack-plugin');
 module.exports = {
     entry: './src/entry.js',
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/extension',
         filename: 'popup.js'
     },
     module: {

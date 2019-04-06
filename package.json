@@ -4,7 +4,6 @@
   "description": "TabsOnCloud extension",
   "main": "extension/popup.js",
   "scripts": {
-    "copy": "npx cpx 'dist/popup.{js,css}' ../extension",
     "postbuild": "npm run copy",
     "build": "webpack --mode none",
     "watch": "webpack --mode none --watch"
