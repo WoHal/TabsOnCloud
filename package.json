@@ -2,14 +2,14 @@
   "name": "extension",
   "version": "1.0.0",
   "description": "TabsOnCloud extension",
-  "main": "dist/popup.js",
+  "main": "extension/popup.js",
   "scripts": {
     "copy": "npx cpx 'dist/popup.{js,css}' ../extension",
     "postbuild": "npm run copy",
     "build": "webpack --mode none",
     "watch": "webpack --mode none --watch"
   },
-  "author": "",
+  "author": "WoHal",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.3.4",
