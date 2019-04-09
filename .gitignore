@@ -1,5 +1,4 @@
 .vscode
-extension/
 extension_source/node_modules/
 extension_source/dist/
 server/node_modules/
